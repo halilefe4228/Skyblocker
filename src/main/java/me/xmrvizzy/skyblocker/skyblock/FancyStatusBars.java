@@ -140,7 +140,7 @@ public class FancyStatusBars {
             int val = resource.value();
             this.fill[0] = fill(val, max);
             this.fill[1] = fill(resource.overflow(), max);
-            this.text = val;
+            this.text = val + (SkyblockerConfig.get().general.bars.showMaxValue ? ("/"+max) : "");
         }
 
         public void draw(DrawContext context) {
