@@ -56,6 +56,10 @@ public class SkyblockerConfig implements ConfigData {
     @ConfigEntry.Gui.TransitiveObject
     public RichPresence richPresence = new RichPresence();
 
+    @ConfigEntry.Category("kuwudra")
+    @ConfigEntry.Gui.TransitiveObject
+    public Kuwudra kuwudra = new Kuwudra();
+
     public static class QuickNav {
         public boolean enableQuickNav = true;
 
@@ -397,6 +401,14 @@ public class SkyblockerConfig implements ConfigData {
         public Info info = Info.LOCATION;
         public boolean cycleMode = false;
         public String customMessage = "Playing Skyblock";
+    }
+
+    public static class Kuwudra {
+        public boolean beamOnSuppliesToPick = false;
+        public boolean beamOnSupplyPlacePoint = false;
+        public boolean beamOnSupplyBuild = false;
+
+
     }
 
     public static class ItemList {

@@ -9,6 +9,7 @@ import me.xmrvizzy.skyblocker.skyblock.dungeon.secrets.DungeonSecrets;
 import me.xmrvizzy.skyblocker.skyblock.dwarven.DwarvenHud;
 import me.xmrvizzy.skyblocker.skyblock.item.*;
 import me.xmrvizzy.skyblocker.skyblock.itemlist.ItemRegistry;
+import me.xmrvizzy.skyblocker.skyblock.kuudra.SupplyBeam;
 import me.xmrvizzy.skyblocker.skyblock.quicknav.QuickNav;
 import me.xmrvizzy.skyblocker.skyblock.rift.TheRift;
 import me.xmrvizzy.skyblocker.skyblock.shortcut.Shortcuts;
@@ -76,6 +77,7 @@ public class SkyblockerMod implements ClientModInitializer {
         NEURepo.init();
         FairySouls.init();
         Relics.init();
+        SupplyBeam.init();
         BackpackPreview.init();
         QuickNav.init();
         DwarvenHud.init();
