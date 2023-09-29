@@ -163,6 +163,7 @@ public class SkyblockerConfig implements ConfigData {
         public boolean compactorDeletorPreview = true;
         public boolean hideEmptyTooltips = true;
         public boolean hideStatusEffectOverlay = false;
+        public boolean hideOnFireHUDEffect = false;
 
         @ConfigEntry.Category("tabHud")
         @ConfigEntry.Gui.CollapsibleObject()
