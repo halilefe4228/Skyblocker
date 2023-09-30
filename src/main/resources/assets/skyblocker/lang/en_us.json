@@ -4,6 +4,8 @@
   "key.skyblocker.toggleB": "Toggle tab HUD to screen B",
   "key.skyblocker.defaultTgl": "Switch tab HUD to default view",
   "key.skyblocker.toggleA": "Toggle tab HUD to screen A",
+  "key.skyblocker.openWardrobe": "Open wardrobe menu /wd",
+  "key.skyblocker.openStorage": "Open storage menu /storage",
   "key.wikiLookup": "Wiki Lookup",
 
   "text.autoconfig.skyblocker.title": "Skyblocker Settings",
@@ -25,6 +27,8 @@
   "text.autoconfig.skyblocker.option.general.experiments.enableSuperpairsSolver": "Enable Superpairs Solver",
   "text.autoconfig.skyblocker.option.general.experiments.enableUltrasequencerSolver": "Enable Ultrasequencer Solver",
   "text.autoconfig.skyblocker.option.general.acceptReparty": "Auto accept Reparty",
+  "text.autoconfig.skyblocker.option.general.hideOnFireHUDEffect": "Hide player on fire HUD animation",
+  "text.autoconfig.skyblocker.option.general.itemRarityBackground": "Color item background based on its rarity",
   "text.autoconfig.skyblocker.option.general.etherwarpOverlay": "Etherwarp Overlay",
   "text.autoconfig.skyblocker.option.general.fishing": "Fishing Helper",
   "text.autoconfig.skyblocker.option.general.fishing.enableFishingHelper": "Enable Fishing Helper",
@@ -321,6 +325,10 @@
   "text.autoconfig.skyblocker.option.slayer.vampireSlayer.maniaUpdateFrequency": "Mania Indicator Update Frequency (Ticks)",
   "text.autoconfig.skyblocker.option.slayer.vampireSlayer.maniaUpdateFrequency.@Tooltip": "The lower the value, the more frequent the updates, which may cause lag.",
 
+  "text.autoconfig.skyblocker.category.kuwudra": "Kuudra",
+  "text.autoconfig.skyblocker.category.kuwudra.beamOnSuppliesToPick": "Render a beacon beam on supplies to be picked",
+  "text.autoconfig.skyblocker.category.kuwudra.beamOnSupplyPlacePoint": "Render a beacon beam on supply placeable coords",
+  "text.autoconfig.skyblocker.category.kuwudra.beamOnSupplyBuild": "Render a beacon beam on not built supply piles",
   "text.autoconfig.skyblocker.option.general.hideEmptyTooltips": "Hide empty item tooltips in menus",
   "text.autoconfig.skyblocker.option.general.hideStatusEffectOverlay": "Hide Status Effect Overlay",
 
