@@ -3,6 +3,8 @@ package me.xmrvizzy.skyblocker.skyblock.item;
 import com.mojang.blaze3d.systems.RenderSystem;
 import me.xmrvizzy.skyblocker.SkyblockerMod;
 import me.xmrvizzy.skyblocker.utils.Utils;
+import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
+import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
 import net.fabricmc.fabric.api.client.screen.v1.ScreenEvents;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.client.MinecraftClient;
@@ -10,12 +12,15 @@ import net.minecraft.client.font.TextRenderer;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.screen.ingame.HandledScreen;
+import net.minecraft.client.option.KeyBinding;
+import net.minecraft.client.util.InputUtil;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.*;
 import net.minecraft.util.Identifier;
+import org.lwjgl.glfw.GLFW;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -38,6 +43,7 @@ public class BackpackPreview {
 
     private static String loaded = ""; // uuid + sb profile currently loaded
     private static Path save_dir = null;
+    private static KeyBinding openStorage;
 
     public static void init() {
         ScreenEvents.AFTER_INIT.register((client, screen, scaledWidth, scaledHeight) -> {
@@ -45,6 +51,17 @@ public class BackpackPreview {
                 updateStorage(handledScreen);
             }
         });
+        openStorage = KeyBindingHelper.registerKeyBinding(
+                new KeyBinding("key.skyblocker.openStorage",
+                        InputUtil.Type.KEYSYM,
+                        GLFW.GLFW_KEY_UNKNOWN,
+                        "key.categories.skyblocker"));
+        ClientTickEvents.END_CLIENT_TICK.register(client -> {
+            if(openStorage.wasPressed()){
+                MinecraftClient.getInstance().player.networkHandler.sendCommand("storage");
+            }
+        });
+
     }
 
     public static void tick() {
