@@ -173,13 +173,13 @@ public class FancyStatusBars {
         }
 
         public void drawText(DrawContext context) {
-            // Dont draw if anchorNum is outside of range
+            // Don't draw if anchorNum is outside of range
             if (anchorNum < 0 || anchorNum > 2) return;
 
             TextRenderer textRenderer = client.textRenderer;
             String text = this.text.toString();
             int x = anchorsX[anchorNum] + this.offsetX + 11 + (bar_width - textRenderer.getWidth(text)) / 2;
-            int y = anchorsY[anchorNum] - 3;
+            int y = anchorsY[anchorNum] - 8;
 
             final int[] offsets = new int[]{-1, 1};
             for (int i : offsets) {
