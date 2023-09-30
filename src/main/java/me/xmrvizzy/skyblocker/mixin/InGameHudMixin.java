@@ -9,6 +9,7 @@ import me.xmrvizzy.skyblocker.skyblock.dungeon.DungeonMap;
 import me.xmrvizzy.skyblocker.utils.Utils;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.hud.InGameHud;
 import net.minecraft.util.Identifier;
@@ -18,6 +19,10 @@ import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+
+import java.util.Objects;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @Environment(EnvType.CLIENT)
 @Mixin(InGameHud.class)
@@ -34,6 +39,18 @@ public abstract class InGameHudMixin {
 
     @Inject(method = "renderHotbar", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/hud/InGameHud;renderHotbarItem(Lnet/minecraft/client/gui/DrawContext;IIFLnet/minecraft/entity/player/PlayerEntity;Lnet/minecraft/item/ItemStack;I)V", ordinal = 0))
     public void skyblocker$renderHotbarItemLock(float tickDelta, DrawContext context, CallbackInfo ci, @Local(ordinal = 4, name = "m") int index, @Local(ordinal = 5, name = "n") int x, @Local(ordinal = 6, name = "o") int y) {
+        if(Utils.isOnSkyblock() && SkyblockerConfig.get().general.itemRarityBackground){
+            if(MinecraftClient.getInstance().player.getInventory().getStack(index).hasNbt()){
+                String text = MinecraftClient.getInstance().player.getInventory().getStack(index).getNbt().toString();
+                String RarityMatchRegex = "\\b(COMMON|UNCOMMON|RARE|EPIC|MYTHIC|LEGENDARY|SPECIAL|VERY SPECIAL)\\b";
+                Pattern pattern = Pattern.compile(RarityMatchRegex);
+                Matcher matcher = pattern.matcher(text);
+                if(matcher.find()){
+                    if(!Objects.equals(matcher.group(), "VERY SPECIAL")){ context.drawTexture(new Identifier(SkyblockerMod.NAMESPACE,"textures/gui/"+matcher.group().toLowerCase()+".png"), x, y, 0, 0, 16, 16);}
+                    else { context.drawTexture(new Identifier(SkyblockerMod.NAMESPACE,"textures/gui/veryspecial.png"), x, y, 0, 0, 16, 16);}
+                }
+            }
+        }
         if (Utils.isOnSkyblock() && HotbarSlotLock.isLocked(index)) {
             context.drawTexture(SLOT_LOCK, x, y, 0, 0, 16, 16);
         }

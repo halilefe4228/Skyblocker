@@ -21,6 +21,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.screen.slot.Slot;
 import net.minecraft.screen.slot.SlotActionType;
 import net.minecraft.text.Text;
+import net.minecraft.util.Identifier;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -33,7 +34,9 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.util.Map;
+import java.util.Objects;
 import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @Mixin(HandledScreen.class)
 public abstract class HandledScreenMixin extends Screen {
@@ -86,6 +89,18 @@ public abstract class HandledScreenMixin extends Screen {
 
     @ModifyVariable(method = "drawSlot", at = @At(value = "LOAD", ordinal = 4), ordinal = 0)
     private ItemStack skyblocker$experimentSolvers$replaceDisplayStack(ItemStack stack, DrawContext context, Slot slot) {
+        if(Utils.isOnSkyblock() && SkyblockerConfig.get().general.itemRarityBackground){
+            if(stack.hasNbt()){
+                String text = stack.getNbt().toString();
+                String RarityMatchRegex = "\\b(COMMON|UNCOMMON|RARE|EPIC|MYTHIC|LEGENDARY|SPECIAL|VERY SPECIAL)\\b";
+                Pattern pattern = Pattern.compile(RarityMatchRegex);
+                Matcher matcher = pattern.matcher(text);
+                if(matcher.find()){
+                    if(!Objects.equals(matcher.group(), "VERY SPECIAL")){ context.drawTexture(new Identifier(SkyblockerMod.NAMESPACE,"textures/gui/"+matcher.group().toLowerCase()+".png"), slot.x, slot.y, 0, 0, 16, 16);}
+                    else { context.drawTexture(new Identifier(SkyblockerMod.NAMESPACE,"textures/gui/veryspecial.png"), slot.x, slot.y, 0, 0, 16, 16);}
+                }
+            }
+        }
         return skyblocker$experimentSolvers$getStack(slot, stack);
     }
 
