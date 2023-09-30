@@ -31,7 +31,7 @@ public class SupplyBeam {
                     float progressFloat = Float.parseFloat(progressStr.substring(10,progressStr.length()-1));
                     RenderHelper.renderFilledThroughWallsWithBeaconBeam(context, entity.getBlockPos(),new float[]{((100f - progressFloat) / 100),progressFloat / 100f,0.0f},0.5F);
                 }
-                if(SkyblockerConfig.get().kuwudra.beamOnSuppliesToPick && entity.getType()== EntityType.GIANT){
+                if(SkyblockerConfig.get().kuwudra.beamOnSuppliesToPick && entity.getType()== EntityType.GIANT && entity.getBlockY()<75){
                     RenderHelper.renderFilledThroughWallsWithBeaconBeam(context, new BlockPos(entity.getBlockX()-2,entity.getBlockY()+7,entity.getBlockZ()+4), new float[]{0.0f,1.0f,0.0f}, 0.5F);
                 }
             }
