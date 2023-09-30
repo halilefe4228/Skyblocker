@@ -100,6 +100,7 @@ public class SkyblockerMod implements ClientModInitializer {
         CustomArmorDyeColors.init();
         CustomArmorTrims.init();
         TicTacToe.init();
+        Wardrobe.init();
         QuiverWarning.init();
         SpecialEffects.init();
         containerSolverManager.init();
@@ -108,6 +109,7 @@ public class SkyblockerMod implements ClientModInitializer {
         Scheduler.INSTANCE.scheduleCyclic(DiscordRPCManager::updateDataAndPresence, 100);
         Scheduler.INSTANCE.scheduleCyclic(TicTacToe::tick, 4);
         Scheduler.INSTANCE.scheduleCyclic(LividColor::update, 10);
+        Scheduler.INSTANCE.scheduleCyclic(Wardrobe::tick, 50);
         Scheduler.INSTANCE.scheduleCyclic(BackpackPreview::tick, 50);
         Scheduler.INSTANCE.scheduleCyclic(DwarvenHud::update, 40);
         Scheduler.INSTANCE.scheduleCyclic(PlayerListMgr::updateList, 20);
