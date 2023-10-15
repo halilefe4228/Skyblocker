@@ -101,6 +101,7 @@ public class SkyblockerMod implements ClientModInitializer {
         CustomArmorTrims.init();
         TicTacToe.init();
         Wardrobe.init();
+        EquipmentMenu.init();
         QuiverWarning.init();
         SpecialEffects.init();
         containerSolverManager.init();
