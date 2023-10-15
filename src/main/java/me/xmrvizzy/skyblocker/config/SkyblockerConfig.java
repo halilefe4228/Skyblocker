@@ -272,6 +272,7 @@ public class SkyblockerConfig implements ConfigData {
     public static class Bars {
         public boolean enableBars = true;
         public boolean showMaxValue = true;
+        public boolean blackUnder20 = false;
 
         @ConfigEntry.Category("barpositions")
         @ConfigEntry.Gui.CollapsibleObject()

@@ -6,6 +6,7 @@
   "key.skyblocker.toggleA": "Toggle tab HUD to screen A",
   "key.skyblocker.openWardrobe": "Open wardrobe menu /wd",
   "key.skyblocker.openStorage": "Open storage menu /storage",
+  "key.skyblocker.openEqMenu": "Open equipment menu /eq",
   "key.wikiLookup": "Wiki Lookup",
 
   "text.autoconfig.skyblocker.title": "Skyblocker Settings",
@@ -22,6 +23,8 @@
   "text.autoconfig.skyblocker.option.general.bars.barpositions.manaBarPosition": "Mana Bar Position",
   "text.autoconfig.skyblocker.option.general.bars.barpositions.defenceBarPosition": "Defence Bar Position",
   "text.autoconfig.skyblocker.option.general.bars.barpositions.experienceBarPosition": "Experience Bar Position",
+  "text.autoconfig.skyblocker.option.general.bars.showMaxValue": "Show HP and Mana in the format of Value / Max",
+  "text.autoconfig.skyblocker.option.general.bars.blackUnder20": "Turn HP Bar Fill and Icon to black when under %20 hp",
   "text.autoconfig.skyblocker.option.general.experiments": "Experiments Solver",
   "text.autoconfig.skyblocker.option.general.experiments.enableChronomatronSolver": "Enable Chronomatron Solver",
   "text.autoconfig.skyblocker.option.general.experiments.enableSuperpairsSolver": "Enable Superpairs Solver",
